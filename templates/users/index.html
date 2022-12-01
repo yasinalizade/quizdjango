@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load user_filters %}
+{% block title %}
+  Пользователи
+{% endblock %}
+{% block content %}
+<body style="background-color:{{ user.color }};">
+{% static '' as STATIC %}
+  <h1>Список пользователей:</h1>
+  <table>
+    <tr>
+      <td>Бейдж</td>
+      <td>Логин</td>
+      <td>Всего очков</td>
+      <td>Пройденных тестов</td>
+    </tr>
+    {% for user in users %}
+    <tr>
+      <td><img src="{{ STATIC }}{{ user.emoji }}" width="20" height="20" class="d-inline-block align-top" alt=""></td>
+      <td bgcolor='{{ user.color }}'>{{ user.username }}</td>
+      <td>{{ user.scores }}</td>
+      <td>{{ user.passed_tests }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock content %}

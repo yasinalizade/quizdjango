@@ -4,7 +4,7 @@ from django.utils.translation import gettext as _
 
 
 class User(AbstractUser):
-    """Пользовательская модель пользователя."""
+    """Модель пользователя."""
 
     username = models.CharField(
         _("Имя пользователя"),
@@ -16,6 +16,12 @@ class User(AbstractUser):
     last_name = models.CharField(_("Фамилия"), max_length=150)
     email = models.EmailField(_("E-mail"), max_length=254, unique=True)
     scores = models.PositiveSmallIntegerField(_("Очки"), default=0)
+    passed_tests = models.PositiveSmallIntegerField(
+        _("Количество пройденных тестов"),
+        default=0
+    )
+    emoji = models.CharField(_("Аватар"), max_length=100, default='img/emoji/nomedal.svg')
+    color = models.CharField(_("Цвет"), max_length=50, default="white")
 
     class Meta:
         ordering = ("-pk",)

@@ -1,10 +1,10 @@
 {% load static %}
-{% load user_filters %}
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: lightskyblue">
+{% static '' as STATIC %}
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: grey">
   <div class="container">
-    <a class="navbar-brand" href="{% url 'posts:index' %}">
-      <img src="{% static 'img/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
-      <span style="color:red">Ya</span>tube</a>
+    <a class="navbar-brand" href="{% url 'quiz:index' %}">
+      <img src="{% static 'img/logo.png' %}" width="50" height="50" align="left-center" class="d-inline-block align-top" alt="">
+      <span style="color:red; font-size:40px;">Q</span><span style="color:blue; font-size:40px;">u</span><span style="color:yellow; font-size:40px;">i</span><span style="color:lightgreen; font-size:40px;">z</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
       aria-controls="navbarContent" aria-expanded="false">
@@ -15,20 +15,15 @@
       {% with request.resolver_match.view_name as view_name %}
       {% if user.username %}
         <li class="nav-item">
-          <a class="nav-link {% if view_name == 'posts:post_create' %}active{% endif %}" href="{% url 'posts:post_create' %}">Новая запись</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {% if view_name == 'users:password_change' %}active{% endif %}" href="{% url 'users:password_change' %}">Изменить пароль</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link {% if view_name == 'logged_out' %}active{% endif %}"  href="{% url 'users:logged_out' %}">Выйти</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item user">
           Пользователь: {{ user.username }}
+          <img src="{{STATIC}}{{ user.emoji }}" width="20" height="20" class="d-inline-block align-top" alt="">
         </li>
       {% else %}
         <li class="nav-item">
-          <a class="nav-link {% if view_name == 'login' %}active{% endif %}" href="{% url 'users:login' %}">Войти</a>
+          <a class="nav-link {% if view_name == 'users:login' %}active{% endif %}" href="{% url 'users:login' %}">Войти</a>
         </li>
         <li class="nav-item">
           <a class="nav-link {% if view_name == 'users:signup' %}active{% endif %}" href="{% url 'users:signup' %}">Регистрация</a>

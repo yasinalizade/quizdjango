@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Результаты{% endblock %}
+{% block content %}
+
+  <div class="row justify-content-center">
+    <div class="col-md-8 p-5">
+      <div class="card">
+        <img class="card-img-top" src="http://kmit.in/emagazine/wp-content/uploads/2018/02/karnataka-results.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Очки: {{score}}</h5>
+
+          <p class="card-text">Проценты: {{percent}}%</p>
+          <p class="card-text">Правильных ответов: {{correct}}</p>
+          <p class="card-text">Неправильных ответов: {{wrong}}</p>
+          <p class="card-text">Всего вопросов: {{total}}</p>
+          {% if percent == 100 %}<h5>Ты молодец</h5>
+          {% else %}<h5>Удачи в следующий раз!</h5>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
