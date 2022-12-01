@@ -9,44 +9,98 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('quiz', '0001_initial'),
+        ("quiz", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='PassedQuiz',
+            name="PassedQuiz",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Quiz',
+            name="Quiz",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('question', models.CharField(max_length=200, null=True, verbose_name='Вопрос')),
-                ('op1', models.CharField(max_length=200, null=True, verbose_name='Вариант 1')),
-                ('op2', models.CharField(max_length=200, null=True, verbose_name='Вариант 2')),
-                ('op3', models.CharField(max_length=200, null=True, verbose_name='Вариант 3')),
-                ('op4', models.CharField(max_length=200, null=True, verbose_name='Вариант 4')),
-                ('answer', models.CharField(help_text='Выберите номер варианта', max_length=200, null=True, verbose_name='Ответ')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "question",
+                    models.CharField(
+                        max_length=200, null=True, verbose_name="Вопрос"
+                    ),
+                ),
+                (
+                    "op1",
+                    models.CharField(
+                        max_length=200, null=True, verbose_name="Вариант 1"
+                    ),
+                ),
+                (
+                    "op2",
+                    models.CharField(
+                        max_length=200, null=True, verbose_name="Вариант 2"
+                    ),
+                ),
+                (
+                    "op3",
+                    models.CharField(
+                        max_length=200, null=True, verbose_name="Вариант 3"
+                    ),
+                ),
+                (
+                    "op4",
+                    models.CharField(
+                        max_length=200, null=True, verbose_name="Вариант 4"
+                    ),
+                ),
+                (
+                    "answer",
+                    models.CharField(
+                        help_text="Выберите номер варианта",
+                        max_length=200,
+                        null=True,
+                        verbose_name="Ответ",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Тест',
-                'verbose_name_plural': 'Тесты',
-                'ordering': ('-pk',),
+                "verbose_name": "Тест",
+                "verbose_name_plural": "Тесты",
+                "ordering": ("-pk",),
             },
         ),
         migrations.DeleteModel(
-            name='QuizModel',
+            name="QuizModel",
         ),
         migrations.AddField(
-            model_name='passedquiz',
-            name='quiz',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='quiz.quiz'),
+            model_name="passedquiz",
+            name="quiz",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="quiz.quiz"
+            ),
         ),
         migrations.AddField(
-            model_name='passedquiz',
-            name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            model_name="passedquiz",
+            name="user",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

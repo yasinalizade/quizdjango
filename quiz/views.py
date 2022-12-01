@@ -4,8 +4,10 @@ from .models import Quiz, PassedQuiz
 
 
 def index(request):
-    if request.method == 'POST':
-        questions = Quiz.objects.exclude(Q(passedquiz__user=request.user)).order_by('id')
+    if request.method == "POST":
+        questions = Quiz.objects.exclude(
+            Q(passedquiz__user=request.user)
+        ).order_by("id")
         user = request.user
         score = 0
         wrong = 0
@@ -27,17 +29,17 @@ def index(request):
         user.passed_tests += total
         user.save()
         context = {
-            'score': score,
-            'time': request.POST.get('timer'),
-            'correct': correct,
-            'wrong': wrong,
-            'percent': percent,
-            'total': total
+            "score": score,
+            "time": request.POST.get("timer"),
+            "correct": correct,
+            "wrong": wrong,
+            "percent": percent,
+            "total": total,
         }
-        return render(request, 'quiz/result.html', context)
+        return render(request, "quiz/result.html", context)
     else:
-        questions = Quiz.objects.exclude(Q(passedquiz__user=request.user)).order_by('id')
-        context = {
-            'questions': questions
-        }
-        return render(request, 'quiz/index.html', context)
+        questions = Quiz.objects.exclude(
+            Q(passedquiz__user=request.user)
+        ).order_by("id")
+        context = {"questions": questions}
+        return render(request, "quiz/index.html", context)

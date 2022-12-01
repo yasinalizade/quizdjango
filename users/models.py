@@ -7,9 +7,7 @@ class User(AbstractUser):
     """Модель пользователя."""
 
     username = models.CharField(
-        _("Имя пользователя"),
-        max_length=150,
-        unique=True
+        _("Имя пользователя"), max_length=150, unique=True
     )
     password = models.CharField(_("Пароль"), max_length=250)
     first_name = models.CharField(_("Имя"), max_length=150)
@@ -17,10 +15,11 @@ class User(AbstractUser):
     email = models.EmailField(_("E-mail"), max_length=254, unique=True)
     scores = models.PositiveSmallIntegerField(_("Очки"), default=0)
     passed_tests = models.PositiveSmallIntegerField(
-        _("Количество пройденных тестов"),
-        default=0
+        _("Количество пройденных тестов"), default=0
     )
-    emoji = models.CharField(_("Аватар"), max_length=100, default='img/emoji/nomedal.svg')
+    emoji = models.CharField(
+        _("Аватар"), max_length=100, default="img/emoji/nomedal.svg"
+    )
     color = models.CharField(_("Цвет"), max_length=50, default="white")
 
     class Meta:

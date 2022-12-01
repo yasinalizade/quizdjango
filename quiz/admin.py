@@ -4,20 +4,20 @@ from .models import Quiz, PassedQuiz
 
 
 @admin.register(Quiz)
-class IngredientAdmin(admin.ModelAdmin):
+class QuizAdmin(admin.ModelAdmin):
     list_display = (
-        'question',
-        'answer',
+        "question",
+        "answer",
     )
-    list_filter = ('question',)
-    empty_value_display = '--пусто--'
+    list_filter = ("question",)
+    empty_value_display = "--пусто--"
 
 
 @admin.register(PassedQuiz)
-class IngredientAdmin(admin.ModelAdmin):
+class PassedQuizAdmin(admin.ModelAdmin):
     list_display = (
-        'user',
-        'quiz',
+        "user",
+        "quiz",
     )
-    list_filter = ('user', 'quiz')
-    empty_value_display = '--пусто--'
+    list_filter = ("user", "quiz")
+    empty_value_display = "--пусто--"

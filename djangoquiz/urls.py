@@ -10,6 +10,6 @@ urlpatterns = [
     path("auth/", include("django.contrib.auth.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-handler404 = 'core.views.page_not_found'
-handler500 = 'core.views.server_error'
-handler403 = 'core.views.permission_denied'
+handler404 = "core.views.page_not_found"
+handler500 = "core.views.server_error"
+handler403 = "core.views.permission_denied"
