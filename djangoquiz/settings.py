@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -91,11 +91,17 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
+# STATIC_ROOT = "static"
 STATICFILES_DIRS = [BASE_DIR / "static"]
+
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+)
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_URL = "users:login"
-LOGIN_REDIRECT_URL = "users:index"
+LOGIN_REDIRECT_URL = "quiz:index"
 
 CSRF_FAILURE_VIEW = "core.views.csrf_failure"

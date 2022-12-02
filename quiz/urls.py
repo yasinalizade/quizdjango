@@ -3,6 +3,4 @@ from . import views
 
 app_name = "quiz"
 
-urlpatterns = [
-    path("", views.index, name="index"),
-]
+urlpatterns = [path("", views.index, name="index")]

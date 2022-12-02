@@ -1,14 +1,15 @@
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.db.models import Q
 from .models import Quiz, PassedQuiz
 
 
-def index(request):
+def index(request: HttpRequest) -> HttpResponse:
+    if request.user.is_anonymous:
+        return render(request, "quiz/greeting.html")
+    user = request.user
+    questions = Quiz.objects.exclude(Q(passedquiz__user=user))
     if request.method == "POST":
-        questions = Quiz.objects.exclude(
-            Q(passedquiz__user=request.user)
-        ).order_by("id")
-        user = request.user
         score = 0
         wrong = 0
         correct = 0
@@ -30,7 +31,6 @@ def index(request):
         user.save()
         context = {
             "score": score,
-            "time": request.POST.get("timer"),
             "correct": correct,
             "wrong": wrong,
             "percent": percent,
@@ -38,8 +38,5 @@ def index(request):
         }
         return render(request, "quiz/result.html", context)
     else:
-        questions = Quiz.objects.exclude(
-            Q(passedquiz__user=request.user)
-        ).order_by("id")
         context = {"questions": questions}
         return render(request, "quiz/index.html", context)

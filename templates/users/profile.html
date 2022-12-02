@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load user_filters %}
+{% block title %}
+  Профиль пользователя
+{% endblock %}
+{% block content %}
+<body style="background-color:{{ user.color }};">
+  <table>
+				<h3 align="center">Привет, {{ user.username }}</h3></td>
+		</table>
+  <div class="card">
+    <div class="card-body">
+			<img src="{% static '' %}{{ user.emoji }}" width="70" height="70" class="icon-emoji d-inline-block align-top" alt="">
+      <p>У тебя на счету: {{ user.scores }} баллов</p>
+      <p>Ты прошел всего {{ user.passed_tests }} тестов</p>
+    </div>
+  </div>
+	<br>
+	<p align="center">Ниже ты можешь кастомизировать свой профиль!</p>
+  <div class="accordion__container">
+	<div class="accordion__row">
+		<input type="checkbox" id="accordion__1">
+		<label for="accordion__1">
+			<div class="name animation arrow">
+				<h4>Бэкграунд</h4>
+			</div>
+		</label>
+		<section>
+			<div class="flex-container">
+				<button class="RosyBrown1">
+					<a href="{% url 'users:buy_color' color='#FFC1C1' price=10 %}" role="button">
+						Купить за 10 баллов
+					</a>
+				</button>
+				<button class="Gold2">
+					<a href="{% url 'users:buy_color' color='#EEC900' price=30 %}" role="button">
+						Купить за 30 баллов
+					</a>
+				</button>
+				<button class="Magenta2">
+					<a href="{% url 'users:buy_color' color='#EE00EE' price=40 %}" role="button">
+						Купить за 40 баллов
+					</a>
+				</button>
+				<button class="DarkCyan">
+					<a href="{% url 'users:buy_color' color='#008B8B' price=100 %}" role="button">
+						Купить за 100 баллов
+					</a>
+				</button>
+				<button class="DarkSlateGray2">
+					<a href="{% url 'users:buy_color' color='#8DEEEE' price=50 %}" role="button">
+						Купить за 50 баллов
+					</a>
+				</button>
+				<button class="white">
+					<a href="{% url 'users:buy_color' color='white' price=0 %}" role="button">
+						Вернуть белый цвет
+					</a>
+				</button>
+			</div>
+		</section>
+	</div>
+	<div class="accordion__row">
+		<input type="checkbox" id="accordion__2">
+		<label for="accordion__2">
+			<div class="name animation arrow">
+				<h4>Бейджи</h4>
+			</div>
+		</label>
+		<section>
+			<div class="flex-container">
+				<div class="flex-items">
+				 <img src="{% static '' %}img/emoji/haloween.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+				 <div>120 Баллов</div>
+					<div><a
+            class='btn-delete {% if user.scores > 300 %}active color=grey{% endif %}'
+            href="{% url 'users:buy_emoji' emoji_id=0 price=120 %}" role="button">
+          		Купить
+          		</a>
+				 </div>
+				</div>
+				<div class="flex-items">
+					<img src="{% static '' %}img/emoji/santa.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+				 <div>150 Баллов</div>
+					<div><a
+            class='btn-delete {% if user.scores > 300 %}active color=grey{% endif %}'
+            href="{% url 'users:buy_emoji' emoji_id=1 price=150 %}" role="button">
+          		Купить
+          		</a>
+					</div>
+				</div>
+				 <div class="flex-items">
+					 <img src="{% static '' %}img/emoji/bronzemedal.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+
+					 <div>10 Баллов</div>
+					 <div><a
+            class='btn-delete {% if user.scores > 300 %}active color=grey{% endif %}'
+            href="{% url 'users:buy_emoji' emoji_id=2 price=10 %}" role="button">
+          		Купить
+          		</a>
+					 </div>
+					 </div>
+				 <div class="flex-items">
+					 <img src="{% static '' %}img/emoji/silvermedal.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+					 <div>50 Баллов</div>
+					 <div><a
+            class='btn-delete {% if user.scores > 300 %}active color=grey{% endif %}'
+            href="{% url 'users:buy_emoji' emoji_id=3 price=50 %}" role="button">
+          		Купить
+          		</a>
+					 </div>
+					 </div>
+				 <div class="flex-items">
+					 <img src="{% static '' %}img/emoji/goldmedal.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+				 <div>100 Баллов</div>
+					 <div><a
+            class='btn-delete {% if user.scores > 300 %}active color=grey{% endif %}'
+            href="{% url 'users:buy_emoji' emoji_id=4 price=100 %}" role="button">
+          		Купить
+          		</a>
+					 </div>
+				 </div>
+			</div>
+    </section>
+  </div>
+</div>
+{% endblock content %}

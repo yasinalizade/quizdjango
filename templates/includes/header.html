@@ -1,6 +1,6 @@
 {% load static %}
 {% static '' as STATIC %}
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: grey">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #DCDCDC">
   <div class="container">
     <a class="navbar-brand" href="{% url 'quiz:index' %}">
       <img src="{% static 'img/logo.png' %}" width="50" height="50" align="left-center" class="d-inline-block align-top" alt="">
@@ -15,15 +15,18 @@
       {% with request.resolver_match.view_name as view_name %}
       {% if user.username %}
         <li class="nav-item">
-          <a class="nav-link {% if view_name == 'logged_out' %}active{% endif %}"  href="{% url 'users:logged_out' %}">Выйти</a>
+          <a class="nav-link"  href="{% url 'users:index' %}">Таблица игроков</a>
         </li>
         <li class="nav-item user">
-          Пользователь: {{ user.username }}
-          <img src="{{STATIC}}{{ user.emoji }}" width="20" height="20" class="d-inline-block align-top" alt="">
+          <a class="nav-link"  href="{% url 'users:profile' %}">{{ user.username }}
+          <img src="{{STATIC}}{{ user.emoji }}" width="18" height="18" class="d-inline-block" alt=""></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if view_name == 'logged_out' %}active{% endif %}"  href="{% url 'users:logged_out' %}">Выйти</a>
         </li>
       {% else %}
         <li class="nav-item">
-          <a class="nav-link {% if view_name == 'users:login' %}active{% endif %}" href="{% url 'users:login' %}">Войти</a>
+          <a class="nav-link {% if view_name == 'users:login' %}active{% endif %}" color="white" href="{% url 'users:login' %}">Войти</a>
         </li>
         <li class="nav-item">
           <a class="nav-link {% if view_name == 'users:signup' %}active{% endif %}" href="{% url 'users:signup' %}">Регистрация</a>

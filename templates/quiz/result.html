@@ -13,8 +13,9 @@
           <p class="card-text">Правильных ответов: {{correct}}</p>
           <p class="card-text">Неправильных ответов: {{wrong}}</p>
           <p class="card-text">Всего вопросов: {{total}}</p>
-          {% if percent == 100 %}<h5>Ты молодец</h5>
+          {% if percent == 100 %}<h5>Ты молодец! Скоро мы добавим новые тесты, возвращайся скорей!</h5>
           {% else %}<h5>Удачи в следующий раз!</h5>
+          <a class="btn btn-success" href="{% url 'quiz:index' %}">Попробовать снова</a>
           {% endif %}
         </div>
       </div>

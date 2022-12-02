@@ -6,7 +6,12 @@ from . import views
 app_name = "users"
 
 urlpatterns = [
-    path("", views.index, name="index"),
+    path("userlist/", views.index, name="index"),
+    path("profile/", views.profile, name="profile"),
+    path(r"buy-color/<str:color>/<int:price>/", views.buy, name="buy_color"),
+    path(
+        r"buy-emoji/<int:emoji_id>/<int:price>/", views.buy, name="buy_emoji"
+    ),
     path("signup/", views.SignUp.as_view(), name="signup"),
     path(
         "logout/",

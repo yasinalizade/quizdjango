@@ -3,7 +3,8 @@
 {% block content %}
   <div class="container ">
     {% if questions %}<h1>Здесь только квизы!</h1>
-    {% else %}<h1>Возвращайся через некоторое время, мы добавим новые вопросы!</h1>
+    {% else %}<h1>Скоро мы добавим новые вопросы!</h1>
+    <p> Загляни на свою <a href="{% url 'users:profile' %}">страницу</a>, где ты можешь приобрести новый бейдж или поменять цвет страницы профиля!</p>
     {% endif %}
 
    <form method='post' action=''>
@@ -42,7 +43,7 @@
       {% endfor %}
       {% if questions %}
       <br>
-      <button type="submit" class="btn btn-primary">Проверить</button>
+      <button type="submit" class="btn btn-success">Проверить</button>
       </form>
       {% endif %}
   </div>

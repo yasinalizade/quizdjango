@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block title %}Ошибка оплаты{% endblock %}
+{% block content %}
+  <h1>Упс, похоже у тебя на счету недостаточно монет!</h1>
+  <h4>Возвращайся к <a href="{% url 'quiz:index' %}">тестам</a> и набери побольше баллов :)</h4>
+{% endblock %}
