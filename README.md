@@ -1,2 +1,46 @@
 # quizdjango
-The web-site on django and django templates with quizes
+
+Разработан и для мобильных устройств, протестирован.
+
+После регистрации/входа пользователь попадает на страницу с квизами,
+где за правильные ответы ему начисляются баллы. Эти баллы он может потратить
+на смену цвета бэкграунда или бейджи. Также в шапке сайта, пользователь может перейти
+к списку со всеми участниками или в свой профиль.
+
+
+## Стэк технологий
+
+Python 3.10
+
+Django 4.1
+
+
+## Установка
+
+### Клонировать репозиторий и перейти в него в командной строке:
+
+```git clone git@github.com:yasinalizade/api_final_yatube.git```
+```cd api_final_yatube```
+
+### Cоздать и активировать виртуальное окружение:
+
+```python -m venv venv```
+
+```source venv/bin/activate```
+
+### Установить зависимости из файла requirements.txt:
+
+```python3 -m pip install --upgrade pip```
+
+```pip install -r requirements.txt```
+
+### Выполнить миграции:
+
+```python manage.py migrate```
+
+### Запустить проект:
+
+```python3 manage.py runserver```
+
+## Авторы
+Ясин Ализаде

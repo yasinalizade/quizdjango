@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpRequest
 from django.views.generic import CreateView
 from django.shortcuts import render, redirect
@@ -20,6 +21,7 @@ class SignUp(CreateView):
     template_name = "users/signup.html"
 
 
+@login_required
 def index(request: HttpRequest) -> HttpResponse:
     users = User.objects.all().order_by("-scores")
     context = {
@@ -28,10 +30,12 @@ def index(request: HttpRequest) -> HttpResponse:
     return render(request, "users/index.html", context)
 
 
+@login_required
 def profile(request: HttpRequest) -> HttpResponse:
     return render(request, "users/profile.html")
 
 
+@login_required
 def buy(
     request: HttpRequest, price: int, color=None, emoji_id=None
 ) -> HttpResponse:

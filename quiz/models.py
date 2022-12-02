@@ -33,7 +33,7 @@ class Quiz(models.Model):
 
 
 class PassedQuiz(models.Model):
-    """Связующая модель для пройденных маршрутов пользователя."""
+    """Связующая модель для пройденных пользователям тестов."""
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
