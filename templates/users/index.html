@@ -17,12 +17,14 @@
     </thead>
     <tbody>
         {% for user in users %}
+          {% if not user.is_superuser or not user.is_staff %}
           <tr class="active-row">
             <td><img src="{% static '' %}{{ user.emoji }}" width="20" height="20" class="d-inline-block align-top" alt=""></td>
             <td bgcolor='{{ user.color }}'>{{ user.username }}</td>
             <td>{{ user.scores }}</td>
             <td>{{ user.passed_tests }}</td>
           </tr>
+          {% endif %}
         {% endfor %}
     </tbody>
   </table>
