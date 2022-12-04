@@ -16,7 +16,7 @@ class QuizModelTest(TestCase):
         )
 
     def test_title_label(self):
-        """verbose_name поля title совпадает с ожидаемым."""
+        """verbose_name совпадает с ожидаемым."""
         quiz = QuizModelTest.quiz
         field_verboses = {
             "question": "Вопрос",
@@ -33,7 +33,7 @@ class QuizModelTest(TestCase):
                 )
 
     def test_title_help_text(self):
-        """help_text поля title совпадает с ожидаемым."""
+        """help_text совпадает с ожидаемым."""
         quiz = QuizModelTest.quiz
         field_help_texts = {
             "question": "Указывайте без знака вопрос",
@@ -46,7 +46,7 @@ class QuizModelTest(TestCase):
                 )
 
     def test_object_name_is_title_field(self):
-        """__str__  task - это строчка с содержимым task.title."""
+        """__str__  quistion - это строчка с содержимым quiz.question."""
         quiz = QuizModelTest.quiz
         expected_object_name = quiz.question
         self.assertEqual(expected_object_name, str(quiz))
