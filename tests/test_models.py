@@ -46,7 +46,7 @@ class QuizModelTest(TestCase):
                 )
 
     def test_object_name_is_title_field(self):
-        """__str__  quistion - это строчка с содержимым quiz.question."""
+        """__str__  quiz - это строчка с содержимым quiz.question."""
         quiz = QuizModelTest.quiz
         expected_object_name = quiz.question
         self.assertEqual(expected_object_name, str(quiz))
